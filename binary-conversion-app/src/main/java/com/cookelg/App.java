@@ -44,17 +44,22 @@ public class App extends Application {
     }
 
     private String binaryString() {
-        // input text field gets input into a Double object
-        Double input = Double.valueOf(tfInputDouble.getText());
-        // Double's static method outputs a long type representation of the bits
-        long bits = Double.doubleToRawLongBits(input.doubleValue());
-        // Long has a pre-built static method to display binary string. by default,
-        // the output does not pad zeroe, e.g. 1.0 would output only 62 bits vice 64.
-        // Formatted string with 64 slots for characters, with the space character
-        // replaced with 0's'
-        String s = String.format("%64s", Long.toBinaryString(bits)).replace(' ', '0');
-        // seperate sign bit, exponent, and mantissa with a space character
-        return s.substring(0, 1) + " " + s.substring(1, 12) + " " + s.substring(12);
+        // Double.valueOf() will throw an exception if the user deletes the input, or
+        // if only a '-' or '.' character is in the field by itself.
+        try {
+            // input text field gets input into a Double object
+            Double input = Double.valueOf(tfInputDouble.getText());
+            // Double's static method outputs a long type representation of the bits
+            long bits = Double.doubleToRawLongBits(input.doubleValue());
+            // Long has a pre-built static method to display binary string. by default,
+            // the output does not pad zeroe, e.g. 1.0 would output only 62 bits vice 64.
+            // Formatted string with 64 slots for characters, with the space character
+            // replaced with 0's'
+            String s = String.format("%64s", Long.toBinaryString(bits)).replace(' ', '0');
+            // seperate sign bit, exponent, and mantissa with a space character
+            return s.substring(0, 1) + " " + s.substring(1, 12) + " " + s.substring(12);
+        } catch (NumberFormatException e) {
+            return "";
+        }
     }
-
 }
