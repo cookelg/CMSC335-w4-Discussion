@@ -11,6 +11,21 @@ A JavaFX app that shows the IEEE 754 double-precision binary form of a decimal n
 
 You don't need to install JavaFX separately. Maven downloads it as a dependency.
 
+### Installation
+
+Clone the repository and move into it:
+
+```bash
+git clone https://github.com/cookelg/CMSC335-w4-Discussion.git
+cd CMSC335-w4-Discussion
+```
+
+If you have SSH keys set up with GitHub, you can clone over SSH instead:
+
+```bash
+git clone git@github.com:cookelg/CMSC335-w4-Discussion.git
+```
+
 ### Running from the command line
 
 From the repository root:
